@@ -1,7 +1,11 @@
-from interface import atm
+from interface.atm import Atm
 
 def start():
-    askname()
+    """
+    The main caller
+    """
+    account_id = Atm.verify()
 
-if __name__ == "atm.py":
+# The Application Execution Starts here.
+if __name__ == "__main__":
     start()
