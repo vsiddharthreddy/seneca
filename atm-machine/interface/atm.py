@@ -1,6 +1,5 @@
 class Atm:
-    verify = False
-    num = 0
+
     def __init__(self):
         pass
 
@@ -14,13 +13,13 @@ class Atm:
         name = input()
         print("Will you please tell me your email-id before going ahead -")
         email_id = input()
-        
+
         # Call a Service and verify the user from database.
-        
-        print("User Verification Successfull")
-        return account_id
-    
-    @staticmethod        
+        if(Service.verify(name,email) == true):
+            print("User Verification Successfull")
+            return account_id
+
+    @staticmethod
     def atm_operations(account_id):
         """
         This function will ask the user for choice of operation.
@@ -29,18 +28,20 @@ class Atm:
         print("Please enter 1 for withdrawl, 2 for deposit, 3 for checking balance")
         choice = int(input())
         Atm.evaluate_choice(choice, account_id)
-        
+
     @staticmethod
     def evaluate_choice(choice, account_id):
         if choice == 1:
             current_balance, withdraw_amount = Atm.withdrawl(account_id)
-            print(f"HEY!!, Your current withdrawn amount is : {withdraw_amount}, Current Available Balance : {current_balance}")            
-        elif choice == 2: 
+            print(
+                f"HEY!!, Your current withdrawn amount is : {withdraw_amount}, Current Available Balance : {current_balance}")
+        elif choice == 2:
             current_balance, deposit_amount = Atm.deposit(account_id)
-            print(f"HEY!!, Your current deposited amount is : {deposit_amount}, Current Available Balance : {current_balance}")            
-        elif choice == 2: 
+            print(
+                f"HEY!!, Your current deposited amount is : {deposit_amount}, Current Available Balance : {current_balance}")
+        elif choice == 2:
             current_balance = Atm.balance_check(account_id)
-            print(f"HEY!!, Your current Balance in your account is : {current_balance}")            
+            print(f"HEY!!, Your current Balance in your account is : {current_balance}")
 
     @staticmethod
     def withdrawl():
@@ -51,24 +52,37 @@ class Atm:
         acc_number = input()
         print("I need your atm pin number -")
         atm_pin = input()
+        print("amount to withdraw")
+        withdrawalamt = input()
         # Call service to validate and verify and complete the withdrawl process.
-        return cur_bal, with_amt
-    
+        service_withdrawal_boolean,service_withdrawal_balance = Service.withdrawl()
+        if(service_withdrawal_boolean == True):
+            print("current balance after withdrawal of +" withdrawalamt+" is: "+service_withdrawal_balance)
+        else:
+            print("not enough funds")
+
     @staticmethod
     def deposit():
         """
         Deposit money into account
         """
+        print("I need your account number -")
+        acc_number = input()
+        print("I need your atm pin number -")
+        atm_pin = input()
+        print("amount to withdraw")
+        deposit_amt = input()
         # Call service to validate and verify and complete the deposit process.
-        pass
-    
+        print(Service.deposit())
+        "pass"
+
     def balance_check():
         """
         Check current Account balance
         """
+
+        print("the current balance is: ")
+
         # Call service to validate and verify and complete the balance checking process.
-        pass
-    
-            
-        
-        
+        print(Service.balance_check())
+        "pass"
