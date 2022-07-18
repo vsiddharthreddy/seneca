@@ -35,7 +35,6 @@ class Service():
 
     @staticmethod
 
-
     def balance_check(account_no):
         """
             checks the balance from database only after retrieving user name and emai
