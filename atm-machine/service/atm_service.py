@@ -1,6 +1,5 @@
 class Service():
     @staticmethod
-
     def verify(name,email):
         """
                 this is checking input from users with database and hence called in service layer
@@ -9,7 +8,6 @@ class Service():
             return true
     "june"
     @staticmethod
-
     def withdrawl(withdrawalamt,account_no,pin):
         """
             this is checking input from users with database and hence called in service layer
@@ -22,8 +20,6 @@ class Service():
                return True,curr_balance
 
     @staticmethod
-
-
     def deposit(deposit_amt,account_no,pin):
         """
            this is takign user input for deposit amount and adding to balance
@@ -34,7 +30,6 @@ class Service():
             return curr_balance
 
     @staticmethod
-
     def balance_check(account_no):
         """
             checks the balance from database only after retrieving user name and emai
